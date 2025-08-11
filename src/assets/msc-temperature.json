@@ -1,0 +1,142 @@
+[
+  {
+    "roomName": "POWER_ROOM",
+    "roomIdentifier": "POWER_ROOM",
+    "maxTemperature": "33",
+    "minTemperature": "18",
+    "areaData": [
+      {
+        "areaName": "ZONE1",
+        "sensor": "ZONE1",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      },
+      {
+        "areaName": "ZONE2",
+        "sensor": "ZONE2",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      },
+      {
+        "areaName": "ZONE6",
+        "sensor": "ZONE6",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      }
+    ]
+  },
+  {
+    "roomName": "SERVER_ROOM_1",
+    "roomIdentifier": "SERVER_ROOM_1",
+    "maxTemperature": "33",
+    "minTemperature": "18",
+    "areaData": [
+      {
+        "areaName": "ZONE1",
+        "sensor": "ZONE1",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      },
+      {
+        "areaName": "ZONE2",
+        "sensor": "ZONE2",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      },
+      {
+        "areaName": "ZONE6",
+        "sensor": "ZONE6",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      }
+    ]
+  },
+  {
+    "roomName": "SERVER_ROOM_2",
+    "roomIdentifier": "SERVER_ROOM_2",
+    "maxTemperature": "33",
+    "minTemperature": "18",
+    "areaData": [
+      {
+        "areaName": "ZONE1",
+        "sensor": "ZONE1",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      },
+      {
+        "areaName": "ZONE2",
+        "sensor": "ZONE2",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      },
+      {
+        "areaName": "ZONE6",
+        "sensor": "ZONE6",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      }
+    ]
+  },
+  {
+    "roomName": "SERVER_ROOM_4",
+    "roomIdentifier": "SERVER_ROOM_4",
+    "maxTemperature": "33",
+    "minTemperature": "18",
+    "areaData": [
+      {
+        "areaName": "ZONE1",
+        "sensor": "ZONE1",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      },
+      {
+        "areaName": "ZONE2",
+        "sensor": "ZONE2",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      },
+      {
+        "areaName": "ZONE6",
+        "sensor": "ZONE6",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      }
+    ]
+  }
+]

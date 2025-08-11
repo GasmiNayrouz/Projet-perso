@@ -1,0 +1,76 @@
+.pcoded-header.header-blue {
+    background: linear-gradient(to right, #d70101, #1f1f1f) !important;
+    /* clean gray gradient */
+    color: rgba(255, 255, 255, 0.9) !important;
+    border-bottom: 1px solid #444;
+}
+
+.pcoded-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    /* Match your header height */
+    z-index: 1100;
+    /* Above sidebar */
+}
+
+
+/* Sidebar container */
+
+.pcoded-navbar {
+    width: 280px;
+    /* Fixed width */
+    transition: none;
+    /* Remove transition for static behavior */
+    overflow: visible;
+    /* Ensure content is visible */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    /* Keep shadow */
+    position: fixed;
+    /* Ensure sidebar stays in place */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+
+/* Ignore collapsed class */
+
+.pcoded-navbar.navbar-collapsed {
+    width: 280px;
+    /* Same fixed width */
+    transition: none;
+    overflow: visible;
+}
+
+
+/* Remove hover behavior */
+
+.pcoded-navbar:hover,
+.pcoded-navbar.navbar-collapsed:hover {
+    width: 280px;
+    /* No change on hover */
+}
+
+
+/* Ensure text labels are always visible */
+
+.pcoded-navbar .nav .nav-text {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* Adjust main container to avoid overlap */
+
+.pcoded-main-container {
+    margin-left: 280px;
+    /* Match sidebar width */
+    margin-top: 56px;
+    /* Offset for header */
+    transition: margin-left 0.3s ease, margin-top 0.3s ease;
+    /* Smooth transition */
+}

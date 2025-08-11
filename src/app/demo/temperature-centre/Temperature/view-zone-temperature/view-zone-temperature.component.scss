@@ -1,0 +1,30 @@
+.container
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: -2vh;
+
+}
+.donutus {
+  border: 0.5px solid rgb(246, 243, 243);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+  padding: 10px; /* Add padding */
+}
+
+.header
+{
+  background-color: #F1F0F5;
+  height: 0%;
+
+}
+.titleTemp{
+  color: #bfbeba;
+  text-align: center; /* Center the text */
+  margin-top: 2VH;
+
+}
+.cn
+{
+  width: 75vh;
+}

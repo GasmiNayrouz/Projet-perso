@@ -1,0 +1,21 @@
+/* src/app/theme/layout/admin/nav-bar/nav-right/nav-right.component.css */
+:host {
+  color: #ccc;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+/* Styles pour les éléments internes si nécessaire */
+.navbar-nav {
+  margin-left: auto; /* Pousser la liste vers la droite si ce n'est pas déjà fait par la structure */
+}
+
+@media (max-width: 991px) {
+  :host {
+     width: 100%;
+     text-align: right;
+     align-items: flex-end;
+  }
+}

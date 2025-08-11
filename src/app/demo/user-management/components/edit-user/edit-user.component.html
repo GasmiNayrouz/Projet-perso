@@ -1,0 +1,46 @@
+<div class="row">
+  <!-- Back Button - place above or below the table -->
+<div class="mb-3">
+  <button class="btn btn-outline-secondary" (click)="goBack()">
+    <i class="feather icon-arrow-left me-1"></i> Retour
+  </button>
+</div>
+
+  <div class="col-sm-12">
+    <form [formGroup]="form">
+      <div class="col-xl-12">
+        <app-card cardTitle="Edit User" [options]="false" blockClass="table-border-style">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Username</th>
+                  <th>Password</th>
+                  <th>Role</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">{{ id }}</th>
+                  <td>
+                    <input type="text" class="form-control" formControlName="username"
+                      [ngClass]="{ 'is-invalid': form.get('username')?.invalid && form.get('username')?.touched }" />
+                  </td>
+                  <td>
+                    <input type="password" class="form-control" formControlName="password"
+                      [ngClass]="{ 'is-invalid': form.get('password')?.invalid && form.get('password')?.touched }" />
+                  </td>
+                  <td>
+                    <select class="form-control" formControlName="appUserRole">
+                      <option value="ADMIN">ADMIN</option>
+                      <option value="USER">USER</option>
+                      <option value="OPERATOR">OPERATOR</option>
+                    </select>
+                  </td>
+                  <td>
+                    <button class="btn btn-primary" [disabled]="form.invalid" (click)="updateUser()">Save</button>
+                  </td>
+                </tr>
+              <

@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-xl-12">
+    <app-card cardTitle="" [options]="false" blockClass="table-border-style">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>User Name</th>
+              <th>Role</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of usersList" (dblclick)="details(user.id)">
+              <th scope="row">{{ user.id }}</th>
+              <td>{{ user.username }}</td>
+              <td>{{ getRoleName(user.appUserRole) }}</td>
+              <td>
+                <span [ngClass]="user.enabled ? 'text-success' : 'text-danger'">
+                  {{ user.enabled ? 'Active' : 'Disabled' }}
+                </span>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-primary" title="Edit" (click)="editUser(user.id)">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-sm btn-danger" title="Delete" (click)="onDeleteClick(user.id)">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="mb-3">
+  <button class="btn btn-outline-secondary" (click)="goBack()">
+    <i class="feather icon-arrow-left me-1"></i> Retour
+  </button>
+</div>
+  <div class="col-sm-12">
+    <app-card cardTitle="Remplir les champs " [options]="false">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" id="username" formControlName="username"
+                [ngClass]="{ 'is-invalid': form.get('username')?.invalid && form.get('username')?.touched }" />
+            </div>
+
+            <div class="form-group mt-3">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" formControlName="password"
+                [ngClass]="{ 'is-invalid': form.get('password')?.invalid && form.get('password')?.touched }" />
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select class="form-control" id="role" formControlName="appUserRole"
+                [ngClass]="{ 'is-invalid': form.get('appUserRole')?.invalid && form.get('appUserRole')?.touched }">
+                <option value="" disabled>Select Role</option>
+                <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-right mt-4">
+          <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Add</button>
+        </div>
+      </form>
+    </app-card>
+  </div>
+</div>

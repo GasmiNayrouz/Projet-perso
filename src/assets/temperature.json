@@ -1,0 +1,268 @@
+[
+  {
+    "mscName": "MSC CHARGUIA",
+    "idetifier": "MSC_CHARGUIA",
+    "rooms": [
+      {
+        "roomName": "POWER_ROOM ",
+        "identifier": "POWER_ROOM",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SERVER_ROOM_1",
+        "identifier": "SERVER_ROOM_1",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SERVER_ROOM_2",
+        "identifier": "SERVER_ROOM_2",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SERVER_ROOM_4",
+        "identifier": "SERVER_ROOM_4",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 2
+      }
+    ]
+  },
+  {
+    "mscName": "MSC Manouba",
+    "idetifier": "MSC_MANOUBA",
+    "rooms": [
+      {
+        "roomName": "SALLE 1",
+        "identifier": "SALLE_1",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 2",
+        "identifier": "SALLE_2",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 1",
+        "identifier": "SALLE_1",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 3",
+        "identifier": "SALLE_3",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 2
+      }
+    ]
+  },
+  {
+    "mscName": "MSC MGHIRA",
+    "idetifier": "MSC_MGHIRA",
+    "rooms": [
+      {
+        "roomName": "SALLE 1",
+        "identifier": "SALLE_1",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 2",
+        "identifier": "SALLE_2",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 1",
+        "identifier": "SALLE_1",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 3",
+        "identifier": "SALLE_3",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 2
+      }
+    ]
+  },
+  {
+    "mscName": "MSC SID RZIG",
+    "idetifier": "MSC_SIDI_RZIG",
+    "rooms": [
+      {
+        "roomName": "SALLE 1",
+        "identifier": "SALLE_1",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 2",
+        "identifier": "SALLE_2",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 1",
+        "identifier": "SALLE_1",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 3",
+        "identifier": "SALLE_3",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 2
+      }
+    ]
+  },
+  {
+    "mscName": "MSC SFAX",
+    "idetifier": "MSC_SFAX",
+    "rooms": [
+      {
+        "roomName": "SALLE 1",
+        "identifier": "SALLE_1",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 2",
+        "identifier": "SALLE_2",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 1",
+        "identifier": "SALLE_1",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 3",
+        "identifier": "SALLE_3",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 2
+      }
+    ]
+  },
+  {
+    "mscName": "MSC GABES",
+    "idetifier": "MSC_GABES",
+    "rooms": [
+      {
+        "roomName": "SALLE 1",
+        "identifier": "SALLE_1",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 2",
+        "identifier": "SALLE_2",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 1",
+        "identifier": "SALLE_1",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 3",
+        "identifier": "SALLE_3",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 2
+      }
+    ]
+  },
+  {
+    "mscName": "MSC SOUSSE",
+    "idetifier": "MSC_SOUSSE",
+    "rooms": [
+      {
+        "roomName": "SALLE 1",
+        "identifier": "SALLE_1",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 2",
+        "identifier": "SALLE_2",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 1",
+        "identifier": "SALLE_1",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 0
+      },
+      {
+        "roomName": "SALLE 3",
+        "identifier": "SALLE_3",
+        "maxTemperatureValue": "25",
+        "minTemperatureValue": "20",
+        "unit": "C",
+        "alertsCount": 2
+      }
+    ]
+  }
+]

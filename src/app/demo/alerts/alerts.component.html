@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xl-12">
+    <app-card cardTitle="Basic Table" [options]="false" blockClass="table-border-style">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Type</th>
+              <th>Location</th>
+              <th>Value</th>
+              <th>Times</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of alerts">
+              <th scope="row">{{ user.id }}</th>
+              <td>{{ user.type }}</td>
+              <td>{{ user.location }}</td>
+              <td>{{ user.value }}</td>
+              <td>{{ user.timestamp | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>

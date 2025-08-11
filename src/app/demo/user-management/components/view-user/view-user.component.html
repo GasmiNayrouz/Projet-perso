@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="User Details" [options]="false">
+      <ul *ngIf="user">
+        <li><strong>Username:</strong> {{ user.username }}</li>
+        <li><strong>Role:</strong> {{ user.appUserRole }}</li>
+        <li><strong>Enabled:</strong> {{ user.enabled ? 'Yes' : 'No' }}</li>
+       
+        <li><strong>Authorities:</strong> 
+          <span *ngFor="let authority of user.authorities; let last = last">
+            {{ authority.authority }}<span *ngIf="!last">, </span>
+          </span>
+        </li>
+      </ul>
+
+      <div *ngIf="!user">
+        <p>User not found!</p>
+      </div>
+
+      <button class="btn btn-primary" *ngIf="user" (click)="editUser(user.id)">Edit</button>
+      <button class="btn btn-danger" *ngIf="user" (click)="onDeleteClick(user.id)">Delete</button>
+    </app-card>
+  </div>
+</div>

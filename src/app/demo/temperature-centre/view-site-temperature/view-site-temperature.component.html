@@ -1,0 +1,57 @@
+<div class="row">
+
+  <div class="col-md-12">
+    <app-card [cardTitle]="mscName" cardClass="tab-card tab-content" blockClass="nav-fill" [options]="false">
+      <ul ngbNav #nav="ngbNav" aria-busy="true" class="nav-pills">
+        <li [ngbNavItem]="1" class="flex">
+
+          <div class="table-responsive">
+            <ng-scrollbar style="height: 362px" visibility="hover" track="all">
+              <table class="table table-hover m-b-0 mt-3">
+                <thead>
+                  <tr>
+                    <th>
+                      <span>
+                        ROOM NAME
+                      </span>
+                    </th>
+                    <th>
+                      <span> MAX
+                      </span>
+                    </th>
+                    <th>
+                      <span> MIN
+                      </span>
+                    </th>
+                    <th *ngFor="let area of areaList">
+                      <span>
+                        {{ area }}
+                      </span>
+                    </th>
+                    <th >
+                      <span>
+                        ZONE6
+                      </span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let room of siteTemperatureData">
+                    <td>{{room?.roomName}}</td>
+                    <td>{{room?.maxTemperature}}</td>
+                    <td>{{room?.minTemperature}}</td>
+                    <td *ngFor="let area of areaList">
+                     {{getAreaTemperature(area,room?.areaData)}}
+                    </td>
+                    <td>{{temperature}}</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </ng-scrollbar>
+          </div>
+        </li>
+      </ul>
+    </app-card>
+  </div>
+</div>

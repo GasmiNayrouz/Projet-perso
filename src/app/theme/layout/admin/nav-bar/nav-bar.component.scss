@@ -1,0 +1,103 @@
+/* src/app/theme/layout/admin/nav-bar/nav-bar.component.css */
+
+
+/* === Styles existants pour nav-bar === */
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important;
+    padding: 10px 20px;
+    background-color: #b3c9e8;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    height: 60px;
+    position: relative;
+}
+
+.b-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+
+}
+
+.logo {
+    width: 130px;
+    height: auto;
+    filter: brightness(90%);
+    transition: filter 0.3s ease;
+}
+
+.logo:hover {
+    filter: brightness(110%);
+}
+
+.navbar-collapse {
+    display: flex;
+    align-items: center;
+}
+
+
+/* === NOUVEAU : Styles pour app-nav-right à l'intérieur de nav-bar === */
+
+
+/* Cela fonctionne grâce à l'encapsulation des styles d'Angular */
+
+app-nav-right {
+    /* Couleur du texte */
+    color: #ccc;
+    /* Graisse du texte */
+    font-weight: 500;
+    /* Vous pouvez ajouter d'autres styles ici si nécessaire */
+    /* Par exemple, pour s'assurer qu'il prend la hauteur et s'aligne bien */
+    display: flex;
+    align-items: center;
+    /* Aligner verticalement le contenu de app-nav-right */
+    height: 100%;
+    /* Prendre la hauteur du conteneur */
+}
+
+
+/* === FIN DES NOUVEAUX STYLES === */
+
+
+/* Hamburger icon styling */
+
+.menu-toggle {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    display: none;
+    cursor: pointer;
+}
+
+
+/* Responsive behavior */
+
+@media (max-width: 991px) {
+    .menu-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        background-color: #aea6a6;
+        flex-direction: column;
+        padding: 10px 20px;
+        z-index: 1000;
+    }
+    /* Appliquer les styles à app-nav-right dans le menu mobile aussi */
+    app-nav-right {
+        width: 100%;
+        text-align: right;
+        /* Aligner le texte à droite */
+        /* Réinitialiser l'alignement vertical pour le mobile si nécessaire */
+        align-items: flex-end;
+        /* Aligner le contenu à la fin (droite) */
+        /* Ou supprimez align-items si text-align:right suffit */
+    }
+}

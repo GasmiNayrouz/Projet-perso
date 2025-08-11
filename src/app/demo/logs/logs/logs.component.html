@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xl-12">
+    <app-card cardTitle="" [options]="false" blockClass="table-border-style">
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Username</th>
+              <th>User ID</th>
+              <th>Action</th>
+              <th>Timestamp</th>
+              <th>IP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let log of logsList">
+              <th scope="row">{{ log.id }}</th>
+              <td>{{ log.username }}</td>
+              <td>{{ log.userId }}</td>
+              <td>{{ log.action }}</td>
+              <td>{{ log.timestamp | date:'medium' }}</td>
+              <td>{{ log.ip || '-' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-card>
+  </div>
+</div>

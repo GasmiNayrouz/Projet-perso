@@ -1,0 +1,38 @@
+{
+  "_id": {
+    "$oid": "66218fd15b5b438daf219d2c"
+  },
+  "MSC_CHARGUIA": {
+    "POWER_ROOM": [
+      {
+        "areaName": "ZONE6",
+        "sensor": "ZONE6",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      },
+      {
+        "areaName": "ZONE6",
+        "sensor": "ZONE6",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      },
+      {
+        "areaName": "ZONE6",
+        "sensor": "ZONE6",
+        "temperature": 25.4,
+        "humidity": 34.2,
+        "date": "21/08/2024",
+        "temperatureUnit": "",
+        "humidityUnit": ""
+      }
+    ],
+    "SERVER_ROOM_1": {},
+    "ROOm_3": {}
+  }
+}
