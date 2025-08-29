@@ -1,0 +1,261 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <!-- Added stock info header and back button -->
+          <div>
+            <h4 class="card-title mb-0">
+              <span *ngIf="currentStock">Détails Entrée du Stock #{{ currentStock.id }}</span>
+              <span *ngIf="!currentStock">Gestion des Détails Stocks</span>
+            </h4>
+            <small class="text-muted" *ngIf="currentStock">
+              Date d'entrée: {{ currentStock.dateEntree | date:'dd/MM/yyyy' }} |
+              Quantité: {{ currentStock.quantite }} |
+              Détails générés: {{ detailStocks.length }}
+            </small>
+          </div>
+          <button
+            *ngIf="stockId"
+            type="button"
+            class="btn btn-outline-secondary"
+            (click)="goBackToStocks()"
+          >
+            <i class="feather icon-arrow-left me-1"></i>
+            Retour aux stocks
+          </button>
+        </div>
+        <div class="card-body">
+
+          <!-- Formulaire de mise à jour des flags -->
+          <div class="row mb-4" *ngIf="isUpdatingFlags">
+            <div class="col-md-12">
+              <h5>Modifier les Flags - {{ selectedDetailStock?.numeroSerie }}</h5>
+              <form [formGroup]="updateFlagsForm" class="row g-3">
+                <div class="col-md-6">
+                  <label for="newFlags" class="form-label">Nouveau statut</label>
+                  <select
+                    class="form-select"
+                    id="newFlags"
+                    formControlName="newFlags"
+                    [ngClass]="{
+                      'is-invalid': updateFlagsForm.get('newFlags')?.invalid && updateFlagsForm.get('newFlags')?.touched,
+                      'is-valid': updateFlagsForm.get('newFlags')?.valid && updateFlagsForm.get('newFlags')?.touched
+                    }"
+                  >
+                    <option value="">Sélectionner un statut</option>
+                    <option *ngFor="let option of flagsOptions" [value]="option.value">
+                      {{ option.label }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <button
+                    type="button"
+                    class="btn btn-primary me-2"
+                    (click)="updateFlags()"
+                    [disabled]="isLoading"
+                  >
+                    <i class="feather icon-save me-1"></i>
+                    Mettre à jour
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    (click)="cancelUpdate()"
+                  >
+                    <i class="feather icon-x me-1"></i>
+                    Annuler
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <hr *ngIf="isUpdatingFlags">
+
+          <!-- Hide search form when viewing specific stock details -->
+          <!-- Formulaire de recherche -->
+          <div class="row mb-4" *ngIf="!stockId">
+            <div class="col-md-12">
+              <h5>Rechercher des Détails Stocks</h5>
+              <form [formGroup]="searchForm" class="row g-3">
+                <div class="col-md-3">
+                  <label for="stockId" class="form-label">Stock</label>
+                  <select
+                    class="form-select"
+                    id="stockId"
+                    formControlName="stockId"
+                  >
+                    <option value="">Tous les stocks</option>
+                    <option *ngFor="let stock of stocks" [value]="stock.id">
+                      Stock #{{ stock.id }} - {{ stock.dateEntree | date:'dd/MM/yyyy' }} ({{ stock.quantite }})
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label for="numeroSerie" class="form-label">Numéro de série</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="numeroSerie"
+                    formControlName="numeroSerie"
+                    placeholder="Ex: STK-001-0001"
+                  />
+                </div>
+                <div class="col-md-3">
+                  <label for="flags" class="form-label">Statut</label>
+                  <select
+                    class="form-select"
+                    id="flags"
+                    formControlName="flags"
+                  >
+                    <option value="">Tous les statuts</option>
+                    <option *ngFor="let option of flagsOptions" [value]="option.value">
+                      {{ option.label }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="searchByStockId()"
+                    [disabled]="isLoading"
+                  >
+                    <i class="feather icon-search me-1"></i>
+                    Par stock
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="searchByNumeroSerie()"
+                    [disabled]="isLoading"
+                  >
+                    <i class="feather icon-hash me-1"></i>
+                    Par série
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="searchByFlags()"
+                    [disabled]="isLoading"
+                  >
+                    <i class="feather icon-flag me-1"></i>
+                    Par statut
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    (click)="resetSearch()"
+                  >
+                    <i class="feather icon-refresh-cw me-1"></i>
+                    Reset
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <hr *ngIf="!stockId">
+
+          <!-- Bouton actualiser -->
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <button
+                type="button"
+                class="btn btn-info"
+                (click)="stockId ? loadDetailStocksByStockId() : loadAllDetailStocks()"
+                [disabled]="isLoading"
+              >
+                <i class="feather icon-refresh-cw me-1"></i>
+                Actualiser
+              </button>
+            </div>
+          </div>
+
+          <!-- Tableau des détails stocks -->
+          <div class="row">
+            <div class="col-md-12">
+              <!-- Updated table title to show context -->
+              <h5>
+                <span *ngIf="currentStock">Détails du Stock #{{ currentStock.id }} ({{ detailStocks.length }})</span>
+                <span *ngIf="!currentStock">Liste des Détails Stocks ({{ detailStocks.length }})</span>
+              </h5>
+
+              <div *ngIf="isLoading" class="text-center py-4">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Chargement...</span>
+                </div>
+              </div>
+
+              <div class="table-responsive" *ngIf="!isLoading">
+                <table class="table table-striped table-hover">
+                  <thead class="table-dark">
+                  <tr>
+                    <th>ID</th>
+                    <th>Numéro de série</th>
+                    <th>Date</th>
+                    <th>Statut</th>
+                    <!-- Hide stock columns when viewing specific stock -->
+                    <th *ngIf="!stockId">Stock ID</th>
+                    <th *ngIf="!stockId">Stock Info</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let detailStock of detailStocks" [class.table-warning]="selectedDetailStock?.id === detailStock.id">
+                    <td>{{ detailStock.id }}</td>
+                    <td>
+                      <code>{{ detailStock.numeroSerie }}</code>
+                    </td>
+                    <td>{{ detailStock.date | date:'dd/MM/yyyy' }}</td>
+                    <td>
+                        <span class="badge" [ngClass]="getFlagsBadgeClass(detailStock.flags)">
+                          {{ getFlagsLabel(detailStock.flags) }}
+                        </span>
+                    </td>
+                    <td *ngIf="!stockId">{{ detailStock.stock?.id }}</td>
+                    <td *ngIf="!stockId">
+                      <small *ngIf="detailStock.stock">
+                        {{ detailStock.stock.dateEntree | date:'dd/MM/yyyy' }}<br>
+                        Qté: {{ detailStock.stock.quantite }}
+                      </small>
+                    </td>
+                    <td>
+                      <button
+                        class="btn btn-sm btn-outline-primary me-1"
+                        (click)="selectDetailStockForUpdate(detailStock)"
+                        [disabled]="isLoading"
+                        title="Modifier le statut"
+                      >
+                        <i class="feather icon-edit"></i>
+                      </button>
+                      <button
+                        class="btn btn-sm btn-outline-danger"
+                        (click)="deleteDetailStock(detailStock.id!)"
+                        [disabled]="isLoading"
+                        title="Supprimer"
+                      >
+                        <i class="feather icon-trash-2"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr *ngIf="detailStocks.length === 0">
+                    <!-- Updated colspan based on context -->
+                    <td [attr.colspan]="stockId ? 5 : 7" class="text-center py-4">
+                      <i class="feather icon-inbox me-2"></i>
+                      <span *ngIf="currentStock">Aucun détail trouvé pour ce stock</span>
+                      <span *ngIf="!currentStock">Aucun détail stock trouvé</span>
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

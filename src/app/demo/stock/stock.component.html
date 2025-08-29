@@ -1,1 +1,232 @@
-<p>stock works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Gestion des Stocks</h4>
+        </div>
+        <div class="card-body">
+
+          <!-- Formulaire de création/modification -->
+          <div class="row mb-4">
+            <div class="col-md-12">
+              <h5>{{ isEditing ? 'Modifier' : 'Créer' }} Entrée  Stock</h5>
+              <form [formGroup]="stockForm" class="row g-3">
+                <div class="col-md-4">
+                  <label for="dateEntree" class="form-label">Date d'entrée</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="dateEntree"
+                    formControlName="dateEntree"
+                    [ngClass]="{
+                      'is-invalid': stockForm.get('dateEntree')?.invalid && stockForm.get('dateEntree')?.touched,
+                      'is-valid': stockForm.get('dateEntree')?.valid && stockForm.get('dateEntree')?.touched
+                    }"
+                  />
+                </div>
+                <div class="col-md-4">
+                  <label for="numDebutStock" class="form-label">Numéro début stock</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="numDebutStock"
+                    formControlName="numDebutStock"
+                    placeholder="Ex: 1000"
+                    [ngClass]="{
+                      'is-invalid': stockForm.get('numDebutStock')?.invalid && stockForm.get('numDebutStock')?.touched,
+                      'is-valid': stockForm.get('numDebutStock')?.valid && stockForm.get('numDebutStock')?.touched
+                    }"
+                  />
+                </div>
+                <div class="col-md-4">
+                  <label for="numFinStock" class="form-label">Numéro fin stock</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="numFinStock"
+                    formControlName="numFinStock"
+                    placeholder="Ex: 1500"
+                    [ngClass]="{
+                      'is-invalid': stockForm.get('numFinStock')?.invalid && stockForm.get('numFinStock')?.touched,
+                      'is-valid': stockForm.get('numFinStock')?.valid && stockForm.get('numFinStock')?.touched
+                    }"
+                  />
+                </div>
+                <div class="col-12">
+                  <button
+                    type="button"
+                    class="btn btn-primary me-2"
+                    (click)="isEditing ? updateStock() : createStock()"
+                    [disabled]="isLoading"
+                  >
+                    <i class="feather icon-save me-1"></i>
+                    {{ isEditing ? 'Mettre à jour' : 'Créer' }}
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary me-2"
+                    (click)="cancelEdit()"
+                    *ngIf="isEditing"
+                  >
+                    <i class="feather icon-x me-1"></i>
+                    Annuler
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-info"
+                    (click)="loadAllStocks()"
+                    [disabled]="isLoading"
+                  >
+                    <i class="feather icon-refresh-cw me-1"></i>
+                    Actualiser
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- Formulaire de recherche -->
+          <div class="row mb-4">
+            <div class="col-md-12">
+              <h5>Rechercher des Stocks</h5>
+              <form [formGroup]="searchForm" class="row g-3">
+                <div class="col-md-3">
+                  <label for="searchDate" class="form-label">Recherche par date</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="searchDate"
+                    formControlName="searchDate"
+                  />
+                </div>
+                <div class="col-md-3">
+                  <label for="startDate" class="form-label">Date début</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="startDate"
+                    formControlName="startDate"
+                  />
+                </div>
+                <div class="col-md-3">
+                  <label for="endDate" class="form-label">Date fin</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="endDate"
+                    formControlName="endDate"
+                  />
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="searchByDate()"
+                    [disabled]="isLoading"
+                  >
+                    <i class="feather icon-search me-1"></i>
+                    Par date
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary me-2"
+                    (click)="searchByDateRange()"
+                    [disabled]="isLoading"
+                  >
+                    <i class="feather icon-calendar me-1"></i>
+                    Par plage
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    (click)="resetSearch()"
+                  >
+                    <i class="feather icon-refresh-cw me-1"></i>
+                    Reset
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- Tableau des stocks -->
+          <div class="row">
+            <div class="col-md-12">
+              <h5>Liste des Stocks ({{ stocks.length }})</h5>
+
+              <div *ngIf="isLoading" class="text-center py-4">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Chargement...</span>
+                </div>
+              </div>
+
+              <div class="table-responsive" *ngIf="!isLoading">
+                <table class="table table-striped table-hover">
+                  <thead class="table-dark">
+                  <tr>
+                    <th>ID</th>
+                    <th>Date d'entrée</th>
+                    <th>Numéro début</th>
+                    <th>Numéro fin</th>
+                    <th>Quantité</th>
+
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let stock of stocks" [class.table-warning]="selectedStock?.id === stock.id">
+                    <td>{{ stock.id }}</td>
+                    <td>{{ stock.dateEntree | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ stock.numDebutStock | number }}</td>
+                    <td>{{ stock.numFinStock | number }}</td>
+                    <td>
+                      <span class="badge bg-success">{{ stock.quantite | number }}</span>
+                    </td>
+
+                    <td>
+                      <!-- Added detail stock button before edit and delete buttons -->
+                      <button
+                        class="btn btn-sm btn-outline-info me-1"
+                        (click)="viewStockDetails(stock.id!)"
+                        [disabled]="isLoading"
+                        title="Voir les détails du stock"
+                      >
+                        <i class="feather icon-eye"></i>
+                      </button>
+                      <button
+                        class="btn btn-sm btn-outline-primary me-1"
+                        (click)="editStock(stock)"
+                        [disabled]="isLoading"
+                      >
+                        <i class="feather icon-edit"></i>
+                      </button>
+                      <button
+                        class="btn btn-sm btn-outline-danger"
+                        (click)="deleteStock(stock.id!)"
+                        [disabled]="isLoading"
+                      >
+                        <i class="feather icon-trash-2"></i>
+                      </button>
+                    </td>
+                  </tr>
+                  <tr *ngIf="stocks.length === 0">
+                    <td colspan="7" class="text-center py-4">
+                      <i class="feather icon-inbox me-2"></i>
+                      Aucun stock trouvé
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class LogsService {
 
-  private baseUrl = 'http://146.59.237.231:8084';
+  private baseUrl = 'http://146.59.237.231:8096';
 
   constructor(private http: HttpClient) {}
 

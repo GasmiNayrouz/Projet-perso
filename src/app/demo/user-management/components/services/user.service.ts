@@ -8,7 +8,7 @@ import { Role } from '../modeles/Role';
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = 'http://146.59.237.231:8084';
+  private baseUrl = 'http://146.59.237.231:8096';
 
   constructor(private http: HttpClient) {}
 
@@ -33,7 +33,7 @@ export class UserService {
   }
 
 createUser(user: { username: string; password: string; appUserRole: string }): Observable<User> {
- 
+
   return this.http.post<User>(`${this.baseUrl}/users`, user);
 }
 

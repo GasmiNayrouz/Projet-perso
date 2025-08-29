@@ -27,6 +27,7 @@ import { StockComponent } from './demo/stock/stock.component';
 import { DocumentComponent } from './demo/document/document.component';
 import { ProductionComponent } from './demo/production/production.component';
 import { QualiteComponent } from './demo/qualite/qualite.component';
+import { DetailStockComponent } from './demo/detail-stock/detail-stock.component';
 
 
 
@@ -50,6 +51,7 @@ import { QualiteComponent } from './demo/qualite/qualite.component';
     DocumentComponent,
     ProductionComponent,
     QualiteComponent,
+    DetailStockComponent,
    
     
     
